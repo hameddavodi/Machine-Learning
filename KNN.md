@@ -2,7 +2,7 @@
 KNN is a machine learning algorithm that can be used for classification and regression tasks. In classification tasks, the algorithm works by finding the K nearest data points to a new, unseen data point and then assigns a label to that data point based on the majority class of its K nearest neighbors. In regression tasks, the algorithm works in a similar way by finding the K nearest data points and then predicting the target value for the new data point based on the average of the target values of its K nearest neighbors.
 
 ### Python code:
-
+```python
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.neighbors import KNeighborsClassifier
@@ -45,12 +45,17 @@ plt.xlabel('Feature 1')
 plt.ylabel('Feature 2')
 plt.title('KNN decision boundary')
 plt.show()
+```
+
+`Accuracy: 0.6`
+
+<img width="588" alt="Screenshot 2023-03-31 at 16 08 15" src="https://user-images.githubusercontent.com/109058050/229143606-3758acf9-8ab4-4c95-9221-867fbad73334.png">
 
 
 
 
+In this example, we first generate random data with 2 features (i.e., X) and binary labels (y). We then split the data into training and testing sets using the train_test_split function, create a KNN classifier with n_neighbors set to 3, and train the classifier on the training data using the fit method.
 
+We then make predictions on the testing data using the predict method, calculate the accuracy of the classifier using the accuracy_score function, and print the accuracy to the console.
 
-In this example, we use the numpy library to generate random data for the KNN algorithm. We generate 100 data points with 2 features (i.e., height and weight) and assign each data point a random gender label ('Male' or 'Female').
-
-We then split the data into training and testing sets using the train_test_split function from scikit-learn, create a KNN classifier with n_neighbors set to 3, train the classifier on the training data using the fit method, make predictions on the testing data using the predict method, and calculate the accuracy of the classifier using the accuracy_score function from scikit-learn. The output will be the accuracy of the classifier on the testing data.
+Finally, we plot the decision boundary of the KNN classifier using the same code as before, with X and y replaced with the entire dataset. The resulting plot will show the decision boundary and the data points colored by their true class labels.
