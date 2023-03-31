@@ -24,7 +24,7 @@ Euclidean norm, or P-norm, is a subclass of an important class of P-norms:
 
   - There are two very important special cases:
     - Infinity norm, or Chebyshev norm which is defined as the maximal element
-    - $`L_1`$ norm (or Manhattan distance) which is defined as the sum of modules of the elements of  $`x_i`$
+    - $L_1$ norm (or Manhattan distance) which is defined as the sum of modules of the elements of  $x_i$
 With numpy we can compute the norms `np.linalg.norm function`:
 
 ```python
