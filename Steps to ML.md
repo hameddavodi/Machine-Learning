@@ -2,73 +2,67 @@
   - G. Strang, Linear Algebra and Its Applications, Academic Press 1980
   - I. Goodfellow, Y. Bengio and A. Courville, Deep Learning, MIR Press 2016
   - S. Boyd, Convex Optimization, Cambridge University Press 2004
-### Linear Algebra:
-We know that:
+## Application: Anomaly Detection:
+### Multi-variate Normal (MVN):
 
-<img width="802" alt="Screenshot 2023-03-31 at 12 37 05" src="https://user-images.githubusercontent.com/109058050/229098029-a0f88992-331f-462d-9e56-686520642550.png">
+This is a Python code that performs anomaly detection on a dataset using multivariate Gaussian distribution.
 
+The first part of the code reads the dataset from a CSV file, prints the number of datapoints and dimensions, and plots the dataset on a scatter plot.
 
+The second part of the code defines two functions: "estimateGaussian" and "multivariateGaussian". The "estimateGaussian" function calculates the mean and covariance of the dataset, while the "multivariateGaussian" function calculates the probability density function of a multivariate Gaussian distribution.
 
-### Standard Norms and P-Norms:
-The most well-known and widely used norm is Euclidean norm:
+The third part of the code uses the "estimateGaussian" function to calculate the mean and covariance of the dataset, and the "multivariateGaussian" function to calculate the probability density of each datapoint in the dataset. It then sets a threshold for anomaly detection and determines the outliers/anomalies in the dataset.
 
-```math
-||x||_2 = \sqrt \Sigma | x_i | ^2
-```
-
-which corresponds to the distance in our real life (the vectors might have complex elements, thus is the modulus here).
-Euclidean norm, or P-norm, is a subclass of an important class of P-norms:
-
-```math
-|x||_p = {\sqrt {\Sigma | x_i | ^p}}^{1/p}
-```
-
-  - There are two very important special cases:
-    - Infinity norm, or Chebyshev norm which is defined as the maximal element
-    - $L_1$ norm (or Manhattan distance) which is defined as the sum of modules of the elements of  $x_i$
-With numpy we can compute the norms `np.linalg.norm function`:
-
+The last part of the code plots the dataset on a scatter plot, with the outliers/anomalies marked in red.
 ```python
+import matplotlib.pyplot as plt
 import numpy as np
-n = 100
-a = np.ones(n)
-print(a)
-print(np.linalg.norm(a, 1)) # L1 norm
-print(np.linalg.norm(a, 2)) # L2 norm
-print(np.linalg.norm(a, np.inf))
-b = a + 1e-3 * np.random.randn(n)
-print(b)
-print()
-print('Relative error:',
-np.linalg.norm(a - b, np.inf) / np.linalg.norm(b, np.inf))
+from numpy import genfromtxt
+from scipy.stats import multivariate_normal
+def read_dataset(filePath,delimiter=','):
+return genfromtxt(filePath, delimiter=delimiter)
+tr_data = read_dataset('Data/anomaly_detect_data.csv')
+n_training_samples = tr_data.shape[0]
+n_dim = tr_data.shape[1]
+print('Number of datapoints in training set: %d' % n_training_samples)
+print('Number of dimensions/features: %d' % n_dim)
+print(tr_data[1:5,:])
+plt.xlabel('Latency (ms)')
+plt.ylabel('Throughput (mb/s)')
+plt.plot(tr_data[:,0],tr_data[:,1],'bx')
+plt.show()
+def estimateGaussian(dataset):
+mu = np.mean(dataset, axis=0) # mean along each dimension / column
+sigma = np.cov(dataset.T)
+return mu, sigma
+def multivariateGaussian(dataset,mu,sigma):
+p = multivariate_normal(mean=mu, cov=sigma)
+return p.pdf(dataset)
+mu, sigma = estimateGaussian(tr_data)
+p = multivariateGaussian(tr_data,mu,sigma)
+thresh = 9e-05
+# determining outliers/anomalies
+outliers = np.asarray(np.where(p < thresh))
+outliers
+plt.figure()
+plt.xlabel('Latency (ms)')
+plt.ylabel('Throughput (mb/s)')
+plt.plot(tr_data[:,0],tr_data[:,1],'bx')
+plt.plot(tr_data[outliers,0],tr_data[outliers,1],'ro')
+plt.show()
 ```
-and the output would be like:
+and the results are:
+Number of datapoints in training set: 307
+Number of dimensions/features: 2
+[[13.409 13.763]
+[14.196 15.853]
+[14.915 16.174]
+[13.577 14.043]]
 
-```lua
-[1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
-1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
-1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
-1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
-1. 1. 1. 1.]
-100.0
-10.0
-1.0
-[1.00037435 0.99953124 0.99992333 1.0014888 1.00032329 1.00050046
-1.00078602 0.99924418 0.99969855 1.00210667 1.00094794 1.00080644
-0.9995451 0.9973272 0.99983952 1.00145786 1.00006065 1.00228847
-1.00024384 0.99927576 1.00074415 1.00052594 1.00042917 1.00072768
-0.99929429 1.00141766 1.00173564 0.99915889 1.00009986 0.99906971
-0.99996623 0.99950146 0.99925539 1.00130413 1.00083764 0.99949217
-0.99928815 0.99995427 1.00000749 0.9989179 0.99995726 0.99777181
-1.00036878 1.00070422 0.99823925 1.00020147 0.99977514 0.99915426
-0.99980286 1.00108473 0.99983239 1.00131403 1.00066266 1.00175787
-0.99936652 1.00029688 1.0008256 1.00069293 0.99890104 1.00069938
-1.00032954 0.9997104 1.00069634 1.0006385 0.9987517 0.99944188
-0.99896297 1.00068079 0.99903867 1.00045222 1.00141346 1.00191724
-0.99962728 0.99963954 0.99829915 1.00199422 1.00041936 1.0002962
-0.9986163 1.00145062 1.00210623 0.99923621 1.0001467 1.00030778
-1.00013833 0.9994478 0.99868239 1.00042074 0.99946207 0.99804034
-0.99985559 1.00228056 1.00085015 1.00133834 0.99957209 1.00028839
-1.0024329 1.00053665 1.00051172 1.00138696]
-Relative error: 0.002666316967426874
-```
+<img width="577" alt="Screenshot 2023-03-31 at 15 26 45" src="https://user-images.githubusercontent.com/109058050/229132732-c40c3fff-b6d9-42f4-b195-d077ce78d709.png">
+
+array([[300, 301, 303, 304, 305, 306]], dtype=int64)
+
+<img width="581" alt="Screenshot 2023-03-31 at 15 27 18" src="https://user-images.githubusercontent.com/109058050/229132851-b5197036-a50b-4c8a-9090-c5c86e5cdb57.png">
+
+
