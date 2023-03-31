@@ -4,6 +4,7 @@
   - S. Boyd, Convex Optimization, Cambridge University Press 2004
 ### Linear Algebra:
 We know that:
+
 <img width="802" alt="Screenshot 2023-03-31 at 12 37 05" src="https://user-images.githubusercontent.com/109058050/229098029-a0f88992-331f-462d-9e56-686520642550.png">
 
 
