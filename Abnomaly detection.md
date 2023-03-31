@@ -2,8 +2,7 @@
   - G. Strang, Linear Algebra and Its Applications, Academic Press 1980
   - I. Goodfellow, Y. Bengio and A. Courville, Deep Learning, MIR Press 2016
   - S. Boyd, Convex Optimization, Cambridge University Press 2004
-## Application: Anomaly Detection:
-### Multi-variate Normal (MVN):
+## Application: Anomaly Detection Multi-variate Normal (MVN):
 
 This is a Python code that performs anomaly detection on a dataset using multivariate Gaussian distribution.
 
@@ -67,5 +66,3 @@ Number of dimensions/features: 2
 array([[300, 301, 303, 304, 305, 306]], dtype=int64)
 ```
 <img width="581" alt="Screenshot 2023-03-31 at 15 27 18" src="https://user-images.githubusercontent.com/109058050/229132851-b5197036-a50b-4c8a-9090-c5c86e5cdb57.png">
-
-
