@@ -52,17 +52,20 @@ plt.plot(tr_data[outliers,0],tr_data[outliers,1],'ro')
 plt.show()
 ```
 and the results are:
+```text
 Number of datapoints in training set: 307
 Number of dimensions/features: 2
 [[13.409 13.763]
 [14.196 15.853]
 [14.915 16.174]
 [13.577 14.043]]
+```
 
 <img width="577" alt="Screenshot 2023-03-31 at 15 26 45" src="https://user-images.githubusercontent.com/109058050/229132732-c40c3fff-b6d9-42f4-b195-d077ce78d709.png">
 
+```text
 array([[300, 301, 303, 304, 305, 306]], dtype=int64)
-
+```
 <img width="581" alt="Screenshot 2023-03-31 at 15 27 18" src="https://user-images.githubusercontent.com/109058050/229132851-b5197036-a50b-4c8a-9090-c5c86e5cdb57.png">
 
 
