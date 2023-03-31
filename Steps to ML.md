@@ -6,20 +6,25 @@
 We know that:
 <img width="802" alt="Screenshot 2023-03-31 at 12 37 05" src="https://user-images.githubusercontent.com/109058050/229098029-a0f88992-331f-462d-9e56-686520642550.png">
 
+
+
 ### Standard Norms and P-Norms:
 The most well-known and widely used norm is Euclidean norm:
 
-\inmath ||x||_2 = \sqrt \Sigma | x_i | ^2
+```math
+||x||_2 = \sqrt \Sigma | x_i | ^2
+```
 
 which corresponds to the distance in our real life (the vectors might have complex elements, thus is the modulus here).
 Euclidean norm, or P-norm, is a subclass of an important class of P-norms:
 
-
-\inmath ||x||_p = {\sqrt {\Sigma | x_i | ^p}}^{1/p}
+```math
+|x||_p = {\sqrt {\Sigma | x_i | ^p}}^{1/p}
+```
 
   - There are two very important special cases:
     - Infinity norm, or Chebyshev norm which is defined as the maximal element
-    - \inmath L_1 norm (or Manhattan distance) which is defined as the sum of modules of the elements of \inmath x_i
+    - $`L_1`$ norm (or Manhattan distance) which is defined as the sum of modules of the elements of  $`x_i`$
 With numpy we can compute the norms `np.linalg.norm function`:
 
 ```python
