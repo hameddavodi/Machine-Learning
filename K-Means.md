@@ -6,13 +6,15 @@ The k-means algorithm starts by randomly selecting k initial cluster centers, an
 
 The k-means algorithm has several advantages, including its simplicity, computational efficiency, and effectiveness in handling large datasets. However, it also has some limitations, such as the sensitivity to the initial choice of cluster centers and the assumption that the clusters are spherical and have equal variance.
 
-K-means clustering has a wide range of applications, including image segmentation, customer segmentation, anomaly detection, and document clustering.
+Note: K-means clustering has a wide range of applications, including image segmentation, customer segmentation, anomaly detection, and document clustering.
 
 Let's start by importing necessary libraries:
-```python 
 
+```python 
+from sklearn.clusters import KMeans
 ```
 Next, let’s define the inputs we will use for our K-means clustering algorithm. For example age and spending score:
+
 ```python 
 X = df[['Age', 'Spending Score (1-100)']].copy()
 
@@ -43,14 +45,11 @@ plt.show()
 The first for loop iterates over values from 1 to 10, and for each value i, it creates a new KMeans object with i clusters and fits it to the data X. However, this loop does not save any information about the results of each KMeans object.
 
 The second for loop is very similar to the first one, but it adds an extra step of appending the within-cluster sum of squares (WCSS) value to a list called wcss. The WCSS is a measure of the variance within each cluster, and it is used to evaluate the quality of the clustering. By iterating over different numbers of clusters and calculating the WCSS for each one, we can use the elbow method to determine the optimal number of clusters to use.
+The `sns.set()` function sets the default style for the plot to use.
 
-The import statements import the necessary packages for plotting the results.
+The `plt.plot()` function creates a line plot of the WCSS values against the number of clusters used. The range(1, 11) specifies the values for the x-axis (i.e., the number of clusters), and wcss specifies the values for the y-axis (i.e., the WCSS values).
 
-The sns.set() function sets the default style for the plot to use.
+The `plt.title()`, `plt.xlabel()`, and `plt.ylabel()` functions add a title and labels to the plot.
 
-The plt.plot() function creates a line plot of the WCSS values against the number of clusters used. The range(1, 11) specifies the values for the x-axis (i.e., the number of clusters), and wcss specifies the values for the y-axis (i.e., the WCSS values).
-
-The plt.title(), plt.xlabel(), and plt.ylabel() functions add a title and labels to the plot.
-
-The plt.show() function displays the plot.
+The `plt.show()` function displays the plot.
 
