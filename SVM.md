@@ -66,3 +66,7 @@ plt.title('SVM Decision Boundary')
 plt.legend()
 plt.show()
 ```
+And finally:
+
+<img width="604" alt="Screenshot 2023-04-03 at 18 35 14" src="https://user-images.githubusercontent.com/109058050/229572368-a7a50f19-2902-46c3-ad3c-fc012264f32f.png">
+
