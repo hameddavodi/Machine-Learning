@@ -3,9 +3,9 @@ Decision tree is a popular machine learning algorithm that can be used for both 
 
 The main advantages of decision trees are:
 
-    - Easy to understand and interpret: Decision trees can be easily visualized and understood, making them a good choice for exploratory data analysis.
-    - Able to handle both categorical and numerical data: Decision trees can handle both types of data, without the need for data preprocessing.
-    - Can handle nonlinear relationships: Decision trees can handle nonlinear relationships between the input and output variables, which makes them useful for a wide range of applications.
+  - Easy to understand and interpret: Decision trees can be easily visualized and understood, making them a good choice for exploratory data analysis.
+  - Able to handle both categorical and numerical data: Decision trees can handle both types of data, without the need for data preprocessing.
+  - Can handle nonlinear relationships: Decision trees can handle nonlinear relationships between the input and output variables, which makes them useful for a wide range of applications.
 
 To use decision trees in Python, we can use the scikit-learn library, which provides a DecisionTreeClassifier class for classification and a DecisionTreeRegressor class for regression. Here's an example of how to use the DecisionTreeClassifier class to build and train a decision tree model on the iris dataset:
 
