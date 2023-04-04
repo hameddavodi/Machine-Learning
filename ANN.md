@@ -1,3 +1,4 @@
+## What is ANN:
 Artificial Neural Networks (ANNs) are a type of machine learning algorithm that is modeled after the structure and function of the human brain. ANNs are designed to recognize patterns and relationships in data, and they can be used for a wide range of applications, including image recognition, natural language processing, and predictive analytics. ANNs consist of interconnected nodes or neurons that process information and transmit signals to other neurons in the network. The strength of these connections can be adjusted through a process called training, which allows the network to learn from examples and improve its performance over time. ANNs have become increasingly popular in recent years due to their ability to handle complex data sets and their potential for solving challenging problems in various fields.
 
 
