@@ -85,10 +85,14 @@ and finally:
 `
 Output after training:
 [[0.00972592]
+
  [0.98200874]
+ 
  [0.98440765]
+ 
  [0.01969368]]
 `
+
  <img width="584" alt="Screenshot 2023-04-04 at 16 05 38" src="https://user-images.githubusercontent.com/109058050/229818397-a640920a-8f55-4da5-b85c-4bc780f38c6b.png">
 
 
