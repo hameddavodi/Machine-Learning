@@ -75,4 +75,5 @@ This code plots two graphs showing the training and validation accuracy and loss
 
 and finally:
 
-
+Still installing and solving problems with tensorflow on Mac M1. 
+To be updated ... 
