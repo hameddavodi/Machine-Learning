@@ -49,7 +49,7 @@ This code defines a simple ANN with one hidden layer of 512 neurons and a dropou
 
 To draw graphs, you can use libraries like Matplotlib or Seaborn to visualize the training and validation loss and accuracy over time. Here's an example using Matplotlib:
 
-```
+```python
 import matplotlib.pyplot as plt
 
 # Plot training & validation accuracy values
